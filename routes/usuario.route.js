@@ -82,6 +82,15 @@ router.post('/add',(req,res)=>{
   })
 })
 
-
+//rota para buscar todos os usuarios
+router.get('/buscaTodos',(req,res)=>{
+    sql.buscaTodosUsuarios().then((resposta)=>{
+      if(resposta instanceof Error){
+        res.status(500).json(resposta);
+        return;
+      }
+      res.status(200).json(resposta);
+    })
+})
 
 module.exports = router;
