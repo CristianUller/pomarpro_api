@@ -9,8 +9,9 @@ router.post('/add',(req,res)=>{
     let dados = req.body.info;
   console.log(dados)
     sql.addrotacao(
-      dados.dt_moviment,
-      dados.tb_tipo_id
+      dados.tb_tipo_id,
+      dados.quantidade,
+      dados.produto
     ).then((resposta)=>{
       console.log(resposta)
       if(resposta instanceof Error){

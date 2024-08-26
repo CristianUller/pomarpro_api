@@ -25,19 +25,22 @@ async function getcolheitaById(id){
 }
 
 //invoca um colheita no banco de dados
-async function addcolheita( 
-   
-    dt_colheita,
-    tb_arvore_id){ try{
+async function addcolheita(
+            quantidade, 
+            dt_colheita,
+            tb_arvore_id
+){ try{
         const[exec] = await conexao.query(`
-            insert into tb_colheita (  
+            insert into tb_colheita ( 
+                quantidade,
                 dt_colheita,
                 tb_arvore_id
             )values(
                 ?,
+                ?,
                 ?
             )
-            `,[  dt_moviment,td_tipo_id])
+            `,[  quantidade,dt_colheita,tb_arvore_id])
             return exec.affectedRows;
     }catch(erro){
         return erro;
@@ -52,6 +55,7 @@ async function buscaTodoscolheita(){
         let [linhas] = await conexao.query(`
             select 
           	    u.id,
+                u.quantidade,
                 u.dt_colheita,
                 u.tb_arvore_id
              from tb_colheita  u;

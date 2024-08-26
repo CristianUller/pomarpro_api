@@ -1,18 +1,18 @@
 var express = require('express');
 var router = express.Router();
-const sql = require('../models/produto.model');
+const sql = require('../models/colheita.model');
 
 
 
 router.post('/add',(req,res)=>{
     //guarda as informações em uma variavel para facilitar o acesso
     let dados = req.body.info;
-  
+    console.log(dados)
     sql.addcolheita(
      
       dados.quantidade,
       dados.dt_colheita,
-      dados.tb_arvore_id
+      dados.arvore
      
     ).then((resposta)=>{
       if(resposta instanceof Error){

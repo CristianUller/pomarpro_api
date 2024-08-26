@@ -21,6 +21,7 @@ var pomarcadRouter = require('./routes/pomarcad.route')
 var rotacaoRouter = require('./routes/rotacao.route')
 var arvoreRouter = require('./routes/arvore.route')
 var colheitaRouter = require('./routes/colheita.route')
+var homeRouter = require('./routes/home.route')
 
 
 // view engine setup
@@ -40,7 +41,8 @@ app.use('/produto',produtoRouter);
 app.use('/pomarcad',pomarcadRouter);
 app.use('/rotacao',rotacaoRouter);
 app.use('/arvore', arvoreRouter)
-app.use('colheita',colheitaRouter)
+app.use('/colheita',colheitaRouter)
+app.use('/home',homeRouter)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
