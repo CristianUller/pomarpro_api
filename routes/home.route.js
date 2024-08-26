@@ -13,6 +13,17 @@ const sql = require('../models/home.model');
     })
 })
 
+router.get('/buscaTodosS',(req,res)=>{
+  sql.buscaTodoshomeS().then((resposta)=>{
+    if(resposta instanceof Error){
+      res.status(500).json(resposta);
+      return;
+    }
+    res.status(200).json(resposta);
+  })
+})
+
+
 
 
 
